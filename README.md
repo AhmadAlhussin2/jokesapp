@@ -10,7 +10,7 @@ The first application release allows you to swap between different Chucknorris j
 
 It is enough to swap right to get a new joke, or left to view the previous joke as it shown in the video
 
-![swaping](https://user-images.githubusercontent.com/102483482/172067944-be62e0cc-2f2a-4a45-9ef7-120ecf515204.gif)
+![swaping](https://user-images.githubusercontent.com/102483482/172067944-be62e0cc-2f2a-4a45-9ef7-120ecf515204.gif =300x250)
 
 Moreover, there is another intersting feature which is auto play jokes 
 
