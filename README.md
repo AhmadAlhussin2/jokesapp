@@ -6,7 +6,7 @@ An application that shows some funny jokes from Chucknorris!
 
 The first application release allows you to swap between different Chucknorris jokes which are updating always
 
-![alt text](https://github.com/AhmadAlhussin2/jokesapp/blob/main/images/firstlayout.png.png?raw=true)
+![alt text](https://github.com/AhmadAlhussin2/jokesapp/blob/main/images/firstlayout.png?raw=true)
 
 
 ## Layout
