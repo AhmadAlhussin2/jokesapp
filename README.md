@@ -9,5 +9,10 @@ The first application release allows you to swap between different Chucknorris j
 ![alt text](https://github.com/AhmadAlhussin2/jokesapp/blob/main/images/firstlayout.png?raw=true)
 
 
+https://user-images.githubusercontent.com/102483482/172067686-c4930cd0-d55a-4c39-97f1-c7217e9ec9f8.mp4
+
 ## Layout
+
+
+
 
