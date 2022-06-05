@@ -18,4 +18,4 @@ By pressing on the play/stop button you can start/stop this feautre.
 
 Also is shown in this video:
 
-
+![autoplay](https://user-images.githubusercontent.com/102483482/172068225-81be73fa-8e77-4121-aaf4-e8f21dc0eb20.gif)
