@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
@@ -96,7 +97,7 @@ class MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Not funny chucknorris",
+          "Funny chucknorris",
           style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'shago'),
         ),
       ),
