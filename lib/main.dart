@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
-
+import 'favourites.dart';
 import 'joke.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:firebase_database/firebase_database.dart';
 
-void main() => runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -27,6 +36,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class MyHomePageState extends State<MyHomePage> {
+  List<String> jokesText = [];
   Widget newJoke() {
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -35,10 +45,17 @@ class MyHomePageState extends State<MyHomePage> {
           future: fetchJoke(),
           builder: (context, snapshot) {
             if (snapshot.data != null) {
-              return decoratedBoxForJokes(snapshot.data as String);
-            } else {
+              jokesText.add(snapshot.data as String);
               return decoratedBoxForJokes(
-                  "Chucknorris is thinking about a new joke");
+                snapshot.data as String,
+                context,
+              );
+            } else {
+              jokesText.add("Chucknorris is thinking about a new joke");
+              return decoratedBoxForJokes(
+                "Chucknorris is thinking about a new joke",
+                context,
+              );
             }
           },
         ),
@@ -46,7 +63,7 @@ class MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget decoratedBoxForJokes(String jokeText) {
+  Widget decoratedBoxForJokes(String jokeText, BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: DecoratedBox(
@@ -63,7 +80,7 @@ class MyHomePageState extends State<MyHomePage> {
           borderRadius: BorderRadius.circular(30),
         ),
         child: SizedBox(
-          height: MediaQuery.of(context).size.height-190,
+          height: MediaQuery.of(context).size.height - 190,
           width: MediaQuery.of(context).size.width,
           child: Padding(
             padding: const EdgeInsets.all(5),
@@ -87,6 +104,7 @@ class MyHomePageState extends State<MyHomePage> {
   }
 
   List<Widget> jokes = [];
+  int currentJokeIndex = 0;
   @override
   Widget build(BuildContext context) {
     if (jokes.length < 3) {
@@ -98,7 +116,10 @@ class MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text(
           "Funny chucknorris",
-          style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'shago'),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontFamily: 'shago',
+          ),
         ),
       ),
       body: SafeArea(
@@ -114,12 +135,13 @@ class MyHomePageState extends State<MyHomePage> {
             child: Swiper(
               itemBuilder: (BuildContext context, int index) {
                 jokes.add(newJoke());
+                currentJokeIndex = index;
                 return jokes[index];
               },
               viewportFraction: 0.8,
               scale: 0.5,
               itemCount: 100000,
-              control: ContolePanel(),
+              control: ControlPanel(),
               loop: false,
               duration: 500,
             ),
@@ -130,10 +152,11 @@ class MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class ContolePanel extends SwiperPlugin {
+class ControlPanel extends SwiperPlugin {
   ///iconData fopr next
   final IconData likeButton;
   IconData autoPlay = Icons.play_circle;
+  IconData favourite = Icons.favorite;
   bool enabled = false;
 
   ///icon size
@@ -141,11 +164,53 @@ class ContolePanel extends SwiperPlugin {
 
   final EdgeInsetsGeometry padding;
 
-  ContolePanel({
+  ControlPanel({
     this.likeButton = Icons.thumb_up,
     this.size = 35.0,
     this.padding = const EdgeInsets.all(5.0),
   });
+
+  Widget buildFavouritesButton({
+    required context,
+  }) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => FavouritesList()),
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 10),
+        child: SizedBox(
+          width: 120.0,
+          height: 60.0,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: Colors.deepPurple,
+              border: Border.all(
+                color: Colors.deepPurple,
+                width: 4,
+              ),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Padding(
+              padding: padding,
+              child: RotatedBox(
+                quarterTurns: 0,
+                child: Icon(
+                  favourite,
+                  size: size + 10,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 
   Widget buildLikeButton({
     required padding,
@@ -153,7 +218,7 @@ class ContolePanel extends SwiperPlugin {
     required config,
     required color,
     required iconDaga,
-  }){
+  }) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -162,7 +227,7 @@ class ContolePanel extends SwiperPlugin {
       child: Container(
         margin: const EdgeInsets.only(bottom: 10),
         child: SizedBox(
-          width: 130.0,
+          width: 120.0,
           height: 60.0,
           child: DecoratedBox(
             decoration: BoxDecoration(
@@ -210,7 +275,7 @@ class ContolePanel extends SwiperPlugin {
       child: Container(
         margin: const EdgeInsets.only(bottom: 10),
         child: SizedBox(
-          width: 130.0,
+          width: 120.0,
           height: 60.0,
           child: DecoratedBox(
             decoration: BoxDecoration(
@@ -251,14 +316,21 @@ class ContolePanel extends SwiperPlugin {
             Container(
               margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
               child: buildLikeButton(
-                  padding: padding,
-                  size: size,
-                  config: config,
-                  color: color,
-                  iconDaga: likeButton),
+                padding: padding,
+                size: size,
+                config: config,
+                color: color,
+                iconDaga: likeButton,
+              ),
             ),
-            buildAutoPlayButton(
-              config: config.controller,
+            Container(
+              margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+              child: buildAutoPlayButton(
+                config: config.controller,
+              ),
+            ),
+            buildFavouritesButton(
+              context: context,
             ),
           ],
         ),

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "228733719016",
+    "project_id": "favourite-chuck-jokes",
+    "storage_bucket": "favourite-chuck-jokes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228733719016:android:9f4035cfe999cde9ae145d",
+        "android_client_info": {
+          "package_name": "com.example.chucknorris"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "228733719016-rc4rnmnvud6kv8pu66sj8u8ja0ti1v8a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC66Ic0Qv1v9ojr5rO4ZglNrRgUzoO7Dj8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "228733719016-rc4rnmnvud6kv8pu66sj8u8ja0ti1v8a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "228733719016-i987coud6di9rkbac45lo5qgumsdcs02.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.chucknorris"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
