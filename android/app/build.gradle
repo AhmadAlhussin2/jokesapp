@@ -61,11 +61,9 @@ android {
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
             firebaseCrashlytics {
-              // Enable processing and uploading of native symbols to Firebase servers.
-              // By default, this is disabled to improve build speeds.
-              // This flag must be enabled to see properly-symbolicated native
-              // stack traces in the Crashlytics dashboard.
-              nativeSymbolUploadEnabled true
+                nativeSymbolUploadEnabled true
+                strippedNativeLibsDir 'build/intermediates/stripped_native_libs/release/out/lib'
+                unstrippedNativeLibsDir 'build/intermediates/merged_native_libs/release/out/lib'
             }
         }
     }
