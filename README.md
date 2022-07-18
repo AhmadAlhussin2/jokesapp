@@ -21,7 +21,7 @@ Moreover, there is another intersting feature which is auto play jokes
 
 By pressing on the play/stop button you can start/stop this feautre
 
-Also it is shown in this video:
+Also it is shown in this video
 
 <img src="https://user-images.githubusercontent.com/102483482/172068225-81be73fa-8e77-4121-aaf4-e8f21dc0eb20.gif" height=700>
 
