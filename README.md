@@ -27,7 +27,7 @@ Also it is shown in this video:
 
 
 ## Supported platforms
-The application is fully build to run on android platform.
+The application is fully build to run on Android platform.
 However, it is possible to run **Funny Chucknorris** on web page, and the web page is fully responsive as it shown in the following video
 
 
@@ -35,7 +35,7 @@ However, it is possible to run **Funny Chucknorris** on web page, and the web pa
 
 ## Getting started
 
-### 1. For android
+### 1. For Android
 You only need to follow the [link](https://drive.google.com/file/d/1ocFxvutNLD8n7t2H7ei_4MvdBDebbXPr/view?usp=sharing) .
 
 It will lead you to google drive link. So, just download the file there, it might say _'google drive can not make virus scan'_ but it is okay since the file uploaded is in apk format
