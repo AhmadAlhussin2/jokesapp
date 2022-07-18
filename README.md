@@ -19,7 +19,7 @@ It is enough to swap right to get a new joke, or left to view the previous joke 
 
 Moreover, there is another intersting feature which is auto play jokes 
 
-By pressing on the play/stop button you can start/stop this feautre. 
+By pressing on the play/stop button you can start/stop this feautre
 
 Also it is shown in this video:
 
