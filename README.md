@@ -1,5 +1,10 @@
 # Funny chucknorris
 
+[![Release](https://github.com/AhmadAlhussin2/jokesapp/actions/workflows/flutter.yml/badge.svg?branch=main)](https://github.com/AhmadAlhussin2/jokesapp/actions/workflows/flutter.yml)
+[![Linter](https://github.com/AhmadAlhussin2/jokesapp/actions/workflows/analyze.yml/badge.svg)](https://github.com/AhmadAlhussin2/jokesapp/actions/workflows/analyze.yml)
+[![GitHub Super-Linter](https://github.com/AhmadAlhussin2/jokesapp/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/AhmadAlhussin2/jokesapp/actions/workflows/linter.yml)
+
+
 An application that shows some funny jokes from Chucknorris! 
 
 ## Features
